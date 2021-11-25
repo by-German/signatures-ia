@@ -60,7 +60,8 @@ function predecir() {
           var tensor = tf.tensor4d(arr);
           var resultado = modelo.predict(tensor).dataSync();
           var max = Math.max(...resultado);
-          var postion = resultado.indexOf(max)
+          var postion = resultado.indexOf(max);
+          var trueoFalse;
         console.log("entro")
         if(postion == 1){
                      respuesta = 'Carlos'
@@ -72,12 +73,18 @@ function predecir() {
                         {
                                 respuesta = 'Omar'
                         }
+        if(max <= 0.5){
+            trueoFalse = 'Falsa'
+        } else {
+          trueoFalse = "Verdadera"
+          }
           var respuesta;
           console.log(resultado)
           console.log("prediccion: " + resultado)
         }
         document.getElementById("request").innerHTML = respuesta
         document.getElementById("request2").innerHTML = max.toFixed(2)
+        document.getElementById("request3").innerHTML = trueoFalse
       }
 
  /**
